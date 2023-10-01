@@ -17,7 +17,7 @@ node{
     stage('4.UploadArtifacts'){
         sh "${mavenHome}/bin/mvn deploy"}
     stage('5.Deploy2UAT'){
-        deploy adapters: [tomcat9(credentialsId: 'tomcat-cred', path: '', url: 'http://54.148.222.31:8177/')], contextPath: null, war: 'target/*war'}
+        deploy adapters: [tomcat9(credentialsId: 'tomcat-cred', path: '', url: 'http://35.91.217.231:8177/')], contextPath: null, war: 'target/*war'}
 
     stage('6.6ManualApproval'){
         sh "echo 'Please review the application performance' "
@@ -27,7 +27,7 @@ node{
 
     stage('7.Deploy2Prod'){
         sh "echo 'Deploy application to the customers/production'"
-        deploy adapters: [tomcat9(credentialsId: 'tomcat-cred', path: '', url: 'http://54.148.222.31:8177/')], contextPath: null, war: 'target/*war'}
+        deploy adapters: [tomcat9(credentialsId: 'tomcat-cred', path: '', url: 'http://35.91.217.231:8177/')], contextPath: null, war: 'target/*war'}
 stage('8.APM'){
         sh "echo 'monitoring and observation and alerting' "
         sh "echo 'application performance Monitoring in progress' "
